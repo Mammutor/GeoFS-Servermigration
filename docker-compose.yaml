@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+
+  roundcubemail:
+    image: roundcube/roundcubemail:latest
+    container_name: roundcubemail
+    volumes:
+      - ./www/var/www/html
+      - ./db/sqlite:/var/roundcube/db
+    ports:
+      - 9002:9002
+    environment:
+      - ROUNDCUBEMAIL_DB_TYPE=sqlite
+      - ROUNDCUBEMAIL_SKIN=elastic
+      - ROUNDCUBEMAIL_DEFAULT_HOST=ssl://imap.uni-muenster.de
+      - ROUNDCUBEMAIL_DEFAULT_PORT=993
+      - ROUNDCUBEMAIL_SMTP_SERVER=tls://secmail.uni-muenster.de
+      - ROUNDCUBEMAIL_SMTP_PORT=587
+
+  dokuwiki:
+    image: lscr.io/linuxserver/dokuwiki:latest
+    container_name: dokuwiki
+    volumes:
+      - ./www/var/www/dokuwiki/config:/config
+    ports:
+      - 9000:9000
+    restart: unless-stopped
