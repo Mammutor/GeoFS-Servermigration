@@ -6,7 +6,7 @@ services:
     image: roundcube/roundcubemail:latest
     container_name: roundcubemail
     volumes:
-      - ./www/var/www/html
+      - ./www:/var/www/html
       - ./db/sqlite:/var/roundcube/db
     ports:
       - 9002:9002
