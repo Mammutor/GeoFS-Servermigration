@@ -1,17 +1,5 @@
 services:
 
-  nginx:
-    image: nginx:latest
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - roundcubemail
-      - dokuwiki
-    networks:
-      - app-network
-
   roundcubemail:
     image: roundcube/roundcubemail:latest
     container_name: roundcubemail
@@ -19,7 +7,7 @@ services:
       - ./www:/var/www/html
       - ./db/sqlite:/var/roundcube/db
     ports:
-      - 9002:80
+      - 9002:443
     environment:
       - ROUNDCUBEMAIL_DB_TYPE=sqlite
       - ROUNDCUBEMAIL_SKIN=elastic
