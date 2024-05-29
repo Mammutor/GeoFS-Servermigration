@@ -15,8 +15,6 @@ services:
       - ROUNDCUBEMAIL_DEFAULT_PORT=993
       - ROUNDCUBEMAIL_SMTP_SERVER=tls://secmail.uni-muenster.de
       - ROUNDCUBEMAIL_SMTP_PORT=587
-    networks:
-      - app-network
 
   dokuwiki:
     image: lscr.io/linuxserver/dokuwiki:latest
@@ -26,9 +24,3 @@ services:
     ports:
       - 9000:80
     restart: unless-stopped
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
