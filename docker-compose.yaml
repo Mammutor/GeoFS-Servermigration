@@ -9,14 +9,14 @@ services:
       - 81:81
       - 443:443
     volumes:
-      - ./appdata:/data
+      - ./appdata/nginx:/data
       - ./letsencrypt:/etc/letsencrypt
 
   dokuwiki:
     image: lscr.io/linuxserver/dokuwiki:latest
     container_name: dokuwiki
     volumes:
-      - ./appdata:/config
+      - ./appdata/dokuwiki:/config
     ports:
       - 8080:8080
     restart: unless-stopped
@@ -25,7 +25,7 @@ services:
     image: roundcube/roundcubemail:latest
     container_name: roundcubemail
     volumes:
-      - ./appdata:/var/www/html
+      - ./appdata/roundcube:/var/www/html
       - ./appdata/db/sqlite:/var/roundcube/db
     ports:
       - 8443:8443
