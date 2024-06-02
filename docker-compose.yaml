@@ -1,6 +1,6 @@
 services:
 
-apache:
+  apache:
     image: httpd:latest
     container_name: apache
     ports:
