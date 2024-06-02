@@ -1,16 +1,16 @@
 services:
 
   nginx:
-    image: jc21/nginx-proxy-manager:latest
+    image: nginx:latest
     container_name: nginx
     restart: unless-stopped
     ports:
       - 80:80
-      - 81:81
-      - 443:443
     volumes:
-      - ./appdata/nginx:/data
-      - ./appdata/nginx/letsencrypt:/etc/letsencrypt
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - dokuwiki
+      - roundcubemail
 
   dokuwiki:
     image: lscr.io/linuxserver/dokuwiki:latest
