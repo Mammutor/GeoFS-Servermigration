@@ -1,16 +1,12 @@
 services:
 
-  nginx:
-    image: jc21/nginx-proxy-manager:latest
-    container_name: nginx
-    restart: unless-stopped
+apache:
+    image: httpd:latest
+    container_name: apache
     ports:
-      - 80:80
-      - 81:81
-      - 443:443
+    - '80:80'
     volumes:
-      - ./appdata/nginx:/data
-      - ./appdata/nginx/letsencrypt:/etc/letsencrypt
+    - ./appdata/apache/website:/usr/local/apache2/htdocs
 
   dokuwiki:
     image: lscr.io/linuxserver/dokuwiki:latest
