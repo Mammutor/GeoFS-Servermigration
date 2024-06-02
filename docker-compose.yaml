@@ -14,7 +14,7 @@ apache:
     volumes:
       - ./appdata/dokuwiki:/config
     ports:
-      - 8080:8080
+      - 8181:80
     restart: unless-stopped
 
   roundcubemail:
@@ -24,7 +24,7 @@ apache:
       - ./appdata/roundcube:/var/www/html
       - ./appdata/roundcube/db/sqlite:/var/roundcube/db
     ports:
-      - 8443:8443
+      - 8282:80
     environment:
       - ROUNDCUBEMAIL_DB_TYPE=sqlite
       - ROUNDCUBEMAIL_SKIN=elastic
