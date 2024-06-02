@@ -4,7 +4,7 @@ apache:
     image: httpd:latest
     container_name: apache
     ports:
-    - '80:80'
+    - 80:80
     volumes:
     - ./appdata/apache/website:/usr/local/apache2/htdocs
 
